@@ -3,9 +3,9 @@
 class conexion
 {
   private $host = "localhost";
-  private $User  = "edrick27";
-  private $password = "casanicoya";
-  private $DataBase = "edrick27";
+  private $User  = "root";
+  private $password = "";
+  private $DataBase = "sam";
   private $conexion;
 
     function conexion()

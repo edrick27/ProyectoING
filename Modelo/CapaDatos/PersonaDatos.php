@@ -1,5 +1,6 @@
 <?php
 include_once("ClassConexion.php");
+require_once("../Modelo/Clases/class_reg_person.php");
 
 class PersonaDatos
 {
@@ -25,6 +26,35 @@ class PersonaDatos
       
     $this->objC->CerrarConexion();
 	}
+    function PruebaGuardarP($objPersona)
+  {
+
+    $IDUser = $objPersona->getIDUser();
+    $Name = $objPersona->getName();
+    $Surname1 = $objPersona->getSurname1();
+    $Surname2 = $objPersona->getSurname2();
+    $OfficePhone = $objPersona->getOfficePhone();
+    $PersonalPhone = $objPersona->getPersonalPhone();
+    $Email = $objPersona->getEmail();
+    $Password= $objPersona->getPassword();
+    $Tipe_User= $objPersona->getTipe_User();
+    $Department= $objPersona->getDepartment();
+   
+     $conn =  $this->objC->ObtenerConexion();
+
+     $Sentencia = $conn->prepare("CALL sp_samAddRegPer(?,?,?,?,?,?,?,?,?,?)");
+
+     $Sentencia->bind_param('ssssssssis',$IDUser,$Name,$Surname1,$Surname2, $OfficePhone,$PersonalPhone,$Email,$Password,$Tipe_User,$Department);
+
+     $Sentencia->execute();
+
+     $resultado = $Sentencia->get_result();
+ 
+      //$r = var_dump($resultado->fetch_assoc());
+        $r = $resultado->fetch_array(MYSQLI_NUM);
+     
+     return $r[0];
+  }
 
     function EliminarPersona($objPersona)
     {
