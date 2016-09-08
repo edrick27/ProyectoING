@@ -26,7 +26,7 @@ class PersonaDatos
       
     $this->objC->CerrarConexion();
 	}
-    function PruebaGuardarP($objPersona)
+  function PruebaGuardarP($objPersona)
   {
 
     $IDUser = $objPersona->getIDUser();
