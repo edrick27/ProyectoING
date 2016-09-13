@@ -1,32 +1,29 @@
 <?php
 include_once("ClassConexion.php");
-require_once("../Modelo/Clases/class_reg_order.php");
+require_once("../Modelo/Clases/class_reg_document.php");
 
-class OrdenDatos
+class DocumentData
 {
     private $objC;
     
 
-	function OredenDatos()
+	function DocumentData()
     {
         $this->objC = new conexion();
     }
 
-  function SaveOrder($objOrden)
+  function SaveDocument($objDocument)
   {
 
-    $CodeOrder = $objOrden->getCodeOrder();
-    $Ubication = $objOrden->getUbication();
-    $CodeDepartment = $objOrden->getCodeDepartment();
-    $TransferYear = $objOrden->getCodeDepartment();
-    $EndDate = $objOrden->getTransferYear();
-    $IDUser = $objOrden->getIDUser();
-   
+    $Cod_document = $objDocument->getCodeDocument();
+    $Cod_tipe = $objDocument->getUbication();
+    $Detail = $objDocument->getCodeDepartment();
+    
      $conn =  $this->objC->ObtenerConexion();
 
-     $Sentencia = $conn->prepare("CALL sp_samAddOrd(?,?,?,?,?,?)");
+     $Sentencia = $conn->prepare("CALL sp_samAddRegDoc(?,?,?,?,?,?)");
 
-     $Sentencia->bind_param('sssssss',$CodeOrder,$Ubication,$CodeDepartment,$TransferYear,$EndDate,$IDUser);
+     $Sentencia->bind_param('sssssss',$CodeDocument,$Ubication,$CodeDepartment,$TransferYear,$EndDate,$IDUser);
 
      $Sentencia->execute();
 
@@ -38,7 +35,7 @@ class OrdenDatos
      return $r[0];
   }
 
-  function MaxOrder($CodeDepartment)
+  function MaxDocument($CodeDepartment)
   {
      $conn =  $this->objC->ObtenerConexion();
 
@@ -56,7 +53,7 @@ class OrdenDatos
      return $r[0];
   }
 
-      function ShowOrder()
+      function ShowDocument()
     {
         $conn =  $this->objC->ObtenerConexion();
         // abre la conexion con la base de datos
@@ -72,15 +69,15 @@ class OrdenDatos
 
          while ($row = mysqli_fetch_array($result))
          {   
-         $order = array();
+         $Document = array();
 
-         $order["SAM03CoOrd"] = $row["SAM03CoOrd"];
-         $order["SAM03Ubic"] = $row["SAM03Ubic"]; 
-         $order["SAM04CoDepart"] = $row["SAM04CoDepart"]; 
-         $order["SAM03AnioTrans"] = $row["SAM03AnioTrans"]; 
-         $order["SAM03FeExt"] = $row["SAM03FeExt"]; 
-         $order["SAM05CedUsr"] = $row["SAM05CedUsr"];
-         array_push($response, $order);
+         $Document["SAM03CoOrd"] = $row["SAM03CoOrd"];
+         $Document["SAM03Ubic"] = $row["SAM03Ubic"]; 
+         $Document["SAM04CoDepart"] = $row["SAM04CoDepart"]; 
+         $Document["SAM03AnioTrans"] = $row["SAM03AnioTrans"]; 
+         $Document["SAM03FeExt"] = $row["SAM03FeExt"]; 
+         $Document["SAM05CedUsr"] = $row["SAM05CedUsr"];
+         array_push($response, $Document);
          }
                
       }

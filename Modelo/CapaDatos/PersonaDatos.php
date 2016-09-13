@@ -70,12 +70,12 @@ class PersonaDatos
     $this->objC->CerrarConexion();
     }    
 
-    function MostrarDatos()
+    function ShowPerson()
     {
         $conn =  $this->objC->ObtenerConexion();
         $response = array();
         //codigo para mostrar datos
-        $sql = 'CALL mostrarDatos()';
+        $sql = 'CALL Sp_samShwRegPers()';
            //run the store proc
         $result = mysqli_query($conn, $sql);
 
@@ -85,11 +85,16 @@ class PersonaDatos
 
          while ($row = mysqli_fetch_array($result))
          {   
-         $persona = array();
+         $person = array();
 
-         $persona["nombre"] = $row["nombre"];
-         $persona["cedula"] = $row["edad"]; 
-         array_push($response, $persona);
+         $person["SAM07CedUsr"] = $row["SAM07CedUsr"];
+         $person["SAM07NomPers"] = $row["SAM07NomPers"]; 
+         $person["SAM07ApePers1"] = $row["SAM07ApePers1"];
+         $person["SAM07ApePers2"] = $row["SAM07ApePers2"]; 
+         $person["SAM07TelefOfi"] = $row["SAM07TelefOfi"];
+         $person["SAM07TelefPers"] = $row["SAM07TelefPers"]; 
+         $person[" SAM07CorrPers"] = $row[" SAM07CorrPers"];
+         array_push($response, $person);
          }
                
       }
