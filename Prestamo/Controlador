@@ -1,0 +1,10 @@
+<?php  
+include('../Modelo/CapaDatos/PersonaDatos.php');
+
+ $ID = $_GET['ID'];
+
+$Data = new PersonaDatos(); 
+$answear = $Data->CheckPersont($ID);    
+
+echo $answear;
+?>
