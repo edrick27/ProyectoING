@@ -2,9 +2,21 @@
 <html>
 <head>
 <?php  
+<<<<<<< HEAD
 include('../Modelo/CapaDatos/DepartamentoDatos.php'); 
 $Data2 = new DepartamentoDatos();    
 $List2 = $Data2->MostrarDepartamento();   
+=======
+include('../Modelo/CapaDatos/PersonaDatos.php');
+include('../Controlador/DepartmentController.php');
+include('../Modelo/CapaDatos/DepartamentoDatos.php'); 
+//include('../Controlador/Controlador.php'); 
+$Data = new PersonaDatos();
+$Data2 = new DepartamentoDatos(); 
+//$List = $Data->ShowPerson();    
+$List2 = $Data2->MostrarDepartamento();    
+//$Controlador = new PruebaController();
+>>>>>>> origin/master
 ?>
 <script type="text/javascript" src="javaScript/Ajax.js"></script>
 <script type="text/javascript" src="javaScript/FiltroPordepartamento.js"></script>

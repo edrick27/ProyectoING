@@ -38,7 +38,11 @@ function DeletePersonAjax()
             {
                 var json = xmlhttp.responseText;
                 
+<<<<<<< HEAD
                  RemovePersonDeleted();
+=======
+                 RemovePersonDeleted(ID[1]);
+>>>>>>> origin/master
                 $( "#PersonalDetail" ).empty();
                 $( "#PersonalDetail" ).append(json);
             }

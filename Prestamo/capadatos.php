@@ -1,11 +1,19 @@
 <?php
 
+<<<<<<< HEAD
  function Lending_report($CodeLending)
+=======
+ function ShowDocumentByDepartament($CodeDepartament)
+>>>>>>> origin/master
   {
         $conn =  $this->objC->ObtenerConexion();
         $response = array();
         //codigo para mostrar datos
+<<<<<<< HEAD
         $sql = 'CALL sp_SamLeding_report("'.$CodeLending.'")';
+=======
+        $sql = 'CALL Sp_samShwDocDepar("'.$CodeDepartament.'")';
+>>>>>>> origin/master
            //run the store proc
         $result = mysqli_query($conn, $sql);
 
@@ -15,6 +23,7 @@
 
          while ($row = mysqli_fetch_array($result))
          {   
+<<<<<<< HEAD
            $Lending = array();
 
            $Lending['sam04DescpPart'] = $row["sam04DescpPart"];
@@ -28,6 +37,16 @@
            $Lending["SAM03Ubic"] = $row["SAM03Ubic"]; 
            $Lending["SAM03CoOrd"] = $row["SAM03CoOrd"]; 
            array_push($response, $Lending);
+=======
+           $Document = array();
+
+           $Document['SAM01CoDoc'] = $row["SAM01CoDoc"];
+           $Document["SAM01Conte"] = $row["SAM01Conte"]; 
+           $Document["SAM01Contri"] = $row["SAM01Contri"]; 
+           $Document["SAM01Anio"]  = $row["SAM01Anio"];
+           $Document["SAM02Descp"] = $row["SAM02Descp"]; 
+           array_push($response, $Document);
+>>>>>>> origin/master
          }
                
       }
@@ -59,6 +78,7 @@
      $r = $resultado->fetch_array(MYSQLI_NUM);
      
      return $r[0];
+<<<<<<< HEAD
   }
 
     function ShowDocumentByOrder($codeDepartament)
@@ -105,3 +125,6 @@
         // cierre de la conexion
         return $response;
     }
+=======
+  }
+>>>>>>> origin/master

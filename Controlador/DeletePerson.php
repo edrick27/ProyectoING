@@ -8,4 +8,9 @@ require_once("../Modelo/CapaDatos/PersonaDatos.php");
    $respuesta = $Datos->DeletePerson($ObjPersona);
 
    echo $respuesta;
+<<<<<<< HEAD
+=======
+
+   //header('Location: ../Vista/persona.php');
+>>>>>>> origin/master
 ?>
