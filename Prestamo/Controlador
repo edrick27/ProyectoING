@@ -1,0 +1,10 @@
+<?php  
+include('../Modelo/CapaDatos/reg_lendingData_09.php');
+
+ $CodeLending = $_GET['code'];
+
+$Data = new reg_lendingData(); 
+$answear = $Data->Lending_report($CodeLending);    
+
+echo $answear;
+?>

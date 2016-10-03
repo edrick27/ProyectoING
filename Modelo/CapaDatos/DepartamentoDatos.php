@@ -21,7 +21,7 @@ class DepartamentoDatos
         $conn =  $this->objC->ObtenerConexion();
         $response = array();
         //codigo para mostrar datos
-        $sql = 'CALL Sp_samShwCatDepart()';
+        $sql = 'CALL Sp_samShwDepart()';
            //run the store proc
         $result = mysqli_query($conn, $sql);
 

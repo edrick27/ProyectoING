@@ -35,23 +35,6 @@ class DocumentData
      return $r[0];
   }
 
-  function MaxDocument($CodeDepartment)
-  {
-     $conn =  $this->objC->ObtenerConexion();
-
-     $Sentencia = $conn->prepare("CALL Sp_samMaxCoDepart(?)");
-
-     $Sentencia->bind_param('s',$CodeDepartment);
-
-     $Sentencia->execute();
-
-     $resultado = $Sentencia->get_result();
- 
-      //$r = var_dump($resultado->fetch_assoc());
-        $r = $resultado->fetch_array(MYSQLI_NUM);
-     
-     return $r[0];
-  }
 
       function ShowDocument()
     {
