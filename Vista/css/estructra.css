@@ -1,0 +1,10 @@
+body {
+    margin-top: 60px;
+}
+
+.item-md {
+    width: 300px;
+}
+#respuesta {
+    display: none;
+}
